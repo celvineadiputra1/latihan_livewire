@@ -16,6 +16,12 @@ class ContactCreate extends Component
     }
 
     public function store(){
+
+        $this->validate([
+            'name' => 'required|min:3',
+            'phone' => 'required|min:12|max:13',
+        ]);
+
         $re = Contact::create([
             'name'=> $this->name,
             'phone' => $this->phone

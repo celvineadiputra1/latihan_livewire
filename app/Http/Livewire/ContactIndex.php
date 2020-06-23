@@ -11,11 +11,19 @@ class ContactIndex extends Component
         'contactStored' => 'handlerStore'
     ];
 
+    public $statusUpdate = false;
+
     public function render()
     {
         return view('livewire.contact-index',[
             'contacts'=> Contact::latest()->get()
         ]);
+    }
+
+    public function getContact($id){
+        $this->statusUpdate = true;
+        $contact = Contact::findOrFail($id);
+        $this->emit("getContact", $contact);
     }
 
     public function destory($id){

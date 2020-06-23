@@ -4,7 +4,12 @@
             {{ session('message') }}
         </div>
     @endif
+
+    @if ($statusUpdate)
+    <livewire:contact-update></livewire:contact-update>
+    @else
     <livewire:contact-create></livewire:contact-create>
+    @endif
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -21,7 +26,7 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->phone }}</td>
                 <td>
-                    <button class="btn btn-primary">Edit</button>
+                    <button class="btn btn-primary" wire:click="getContact({{ $item->id }})">Edit</button>
                     <button class="btn btn-danger" wire:click="destory({{ $item->id }})">Delete</button>
                 </td>
             </tr>

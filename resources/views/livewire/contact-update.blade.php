@@ -1,10 +1,11 @@
 <div>
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="udpate">
         <div class="card mb-2">
             <div class="card-body">
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
+                            <input type="hidden" name="contactId" wire:model="contactId">
                             <input wire:model="name" type="text" name="" id="" class="form-control @error('name')
                                 is-invalid
                             @enderror" placeholder="Name">
